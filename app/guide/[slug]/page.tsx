@@ -193,6 +193,33 @@ export default function GuidePage() {
         ))}
       </main>
 
+      {/* Table of Contents */}
+      <section className="py-16" style={{ background: "var(--bg-elevated)", borderTop: "1px solid var(--border)" }}>
+        <div className="max-w-2xl mx-auto px-6">
+          <h2 className="text-2xl font-bold mb-6">What&apos;s in the Full Guide</h2>
+          <div className="space-y-4">
+            {guide.tableOfContents.map((section, i) => (
+              <div
+                key={section.section}
+                className="p-5 rounded-xl"
+                style={{ background: "var(--bg)", border: "1px solid var(--border)" }}
+              >
+                <div className="flex items-baseline justify-between mb-1">
+                  <h3 className="font-semibold">{section.section}</h3>
+                  <span className="text-xs" style={{ color: "var(--text-muted)" }}>Pages {section.pages}</span>
+                </div>
+                <p className="text-sm" style={{ color: "var(--text-muted)" }}>{section.items}</p>
+                {i === 0 && (
+                  <span className="inline-block text-xs mt-2 px-2 py-0.5 rounded" style={{ background: "color-mix(in srgb, var(--accent) 12%, transparent)", color: "var(--accent)" }}>
+                    Free preview above
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Anchoring + Full Guide CTA */}
       <section className="py-20">
         <div className="max-w-2xl mx-auto px-6">
@@ -204,9 +231,9 @@ export default function GuidePage() {
               <p className="text-sm font-medium mb-4" style={{ color: "var(--text-muted)" }}>
                 A Cursor AI course costs $200+. This guide is {guide.price} and gets you there in {guide.readTime}.
               </p>
-              <h2 className="text-3xl font-bold mb-2">Get the Full Guide</h2>
+              <h2 className="text-3xl font-bold mb-2">Get the Complete Guide</h2>
               <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-                {guide.totalPages} pages. Everything above plus:
+                {guide.totalPages} pages across 4 sections. What you get:
               </p>
             </div>
 
