@@ -15,7 +15,7 @@ const sites: Record<string, SiteConfig> = {
     description: "Quick, no-nonsense tech guides that get you from confused to confident in minutes.",
     domain: "techcliffnotes.com",
     color: "blue",
-    colorHex: "#2563eb",
+    colorHex: "#2563EB",
     emoji: "📘",
   },
   "appcliffnotes.com": {
@@ -24,7 +24,7 @@ const sites: Record<string, SiteConfig> = {
     description: "Step-by-step app guides that skip the fluff and get you productive fast.",
     domain: "appcliffnotes.com",
     color: "violet",
-    colorHex: "#7c3aed",
+    colorHex: "#7C3AED",
     emoji: "📱",
   },
   "cliffnotetech.com": {
@@ -32,8 +32,8 @@ const sites: Record<string, SiteConfig> = {
     tagline: "Technology Without the Headache",
     description: "Bite-sized tech tutorials for people who just want things to work.",
     domain: "cliffnotetech.com",
-    color: "emerald",
-    colorHex: "#059669",
+    color: "cyan",
+    colorHex: "#06B6D4",
     emoji: "🧠",
   },
   "easyappguides.com": {
@@ -41,8 +41,8 @@ const sites: Record<string, SiteConfig> = {
     tagline: "Apps Explained Like You're Human",
     description: "Simple, friendly app walkthroughs for everyday people. No jargon, just results.",
     domain: "easyappguides.com",
-    color: "amber",
-    colorHex: "#d97706",
+    color: "orange",
+    colorHex: "#F97316",
     emoji: "✨",
   },
   "setupsherpa.com": {
@@ -50,8 +50,8 @@ const sites: Record<string, SiteConfig> = {
     tagline: "Your Guide to Getting Set Up",
     description: "Installation and setup guides that actually make sense. We'll get you there.",
     domain: "setupsherpa.com",
-    color: "teal",
-    colorHex: "#0d9488",
+    color: "emerald",
+    colorHex: "#10B981",
     emoji: "🏔️",
   },
   "softwaremadeasy.com": {
@@ -59,8 +59,8 @@ const sites: Record<string, SiteConfig> = {
     tagline: "Software Tutorials That Don't Suck",
     description: "Learn any software without the pain. Clear tutorials, real screenshots, zero confusion.",
     domain: "softwaremadeasy.com",
-    color: "rose",
-    colorHex: "#e11d48",
+    color: "red",
+    colorHex: "#EF4444",
     emoji: "🎯",
   },
   "techtutorcafe.com": {
@@ -68,8 +68,8 @@ const sites: Record<string, SiteConfig> = {
     tagline: "Pull Up a Chair. Let's Learn Tech.",
     description: "A warm, friendly place to learn technology at your own pace. Coffee not included.",
     domain: "techtutorcafe.com",
-    color: "orange",
-    colorHex: "#ea580c",
+    color: "amber",
+    colorHex: "#F59E0B",
     emoji: "☕",
   },
 };
