@@ -34,9 +34,36 @@ function SuccessContent() {
           A confirmation email has also been sent. You can re-download anytime from this link.
         </p>
 
+        {/* Post-purchase share */}
+        <div className="mt-8 p-6 rounded-xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
+          <p className="text-sm font-medium mb-3">
+            You&apos;re ahead of 95% of people. Share this with someone who needs it.
+          </p>
+          <div className="flex justify-center gap-3">
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Just grabbed the Cursor AI complete guide. 30 minutes > 3 hour YouTube tutorials.")}&url=${encodeURIComponent("https://techcliffnotes.com/guide/cursor-ai")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-lg text-sm font-medium transition hover:opacity-80"
+              style={{ background: "var(--bg-elevated)", border: "1px solid var(--border)", color: "var(--text-muted)" }}
+            >
+              Share on 𝕏
+            </a>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://techcliffnotes.com/guide/cursor-ai")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-lg text-sm font-medium transition hover:opacity-80"
+              style={{ background: "var(--bg-elevated)", border: "1px solid var(--border)", color: "var(--text-muted)" }}
+            >
+              Share on LinkedIn
+            </a>
+          </div>
+        </div>
+
         <a
           href="/"
-          className="text-sm font-medium transition"
+          className="inline-block mt-6 text-sm font-medium transition"
           style={{ color: "var(--accent)" }}
         >
           ← Back to Guides

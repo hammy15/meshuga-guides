@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import ThemeToggle from "../../components/ThemeToggle";
+import SocialProofTicker from "../../components/SocialProofTicker";
+import ShareButtons from "../../components/ShareButtons";
+import PurchaseCounter from "../../components/PurchaseCounter";
 import { cursorAiGuide } from "@/lib/guides/cursor-ai";
 
 const guide = cursorAiGuide;
@@ -142,11 +145,19 @@ export default function GuidePage() {
           </div>
 
           {/* Quick Buy */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4">
             <BuyButton size="large" />
             <span className="text-sm" style={{ color: "var(--text-muted)" }}>
               One-time purchase. Lifetime updates. Instant download.
             </span>
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <PurchaseCounter count={127} />
+            <ShareButtons
+              title={guide.title}
+              url="https://techcliffnotes.com/guide/cursor-ai"
+              message="I just found a 30-minute guide to Cursor AI. While everyone else is watching 3-hour tutorials."
+            />
           </div>
         </div>
       </header>
@@ -255,6 +266,9 @@ export default function GuidePage() {
           </div>
         </div>
       </section>
+
+      {/* Social Proof Ticker */}
+      <SocialProofTicker />
 
       {/* Footer */}
       <footer
