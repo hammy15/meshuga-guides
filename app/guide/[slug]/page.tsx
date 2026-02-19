@@ -1,40 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-// Theme system
-type Theme = "dark" | "light" | "contrast";
-
-function useTheme(): [Theme, (t: Theme) => void] {
-  const [theme, setThemeState] = useState<Theme>("dark");
-  useEffect(() => {
-    const saved = localStorage.getItem("meshuga-theme") as Theme;
-    if (saved) setThemeState(saved);
-  }, []);
-  const setTheme = (t: Theme) => {
-    setThemeState(t);
-    localStorage.setItem("meshuga-theme", t);
-  };
-  return [theme, setTheme];
-}
-
-const themes: Record<Theme, Record<string, string>> = {
-  dark: {
-    bg: "#0a0a0a", bgCard: "#111113", border: "#1a1a1f",
-    text: "#e8e8ed", textMuted: "#6b6b7b", textWhisper: "#4a4a58",
-    accent: "#6366f1", accentSoft: "#6366f120",
-  },
-  light: {
-    bg: "#fafafa", bgCard: "#ffffff", border: "#e5e5e5",
-    text: "#1a1a1a", textMuted: "#6b6b6b", textWhisper: "#999999",
-    accent: "#4f46e5", accentSoft: "#4f46e510",
-  },
-  contrast: {
-    bg: "#000000", bgCard: "#0a0a0a", border: "#333333",
-    text: "#ffffff", textMuted: "#cccccc", textWhisper: "#aaaaaa",
-    accent: "#818cf8", accentSoft: "#818cf830",
-  },
-};
+import { useState } from "react";
+import ThemeToggle from "../../components/ThemeToggle";
 
 // Guide data (will be from CMS/markdown later)
 const guide = {
@@ -85,80 +52,67 @@ const guide = {
   ],
 };
 
-function ThemeToggle({ theme, setTheme }: { theme: Theme; setTheme: (t: Theme) => void }) {
-  const t = themes[theme];
-  return (
-    <div className="flex gap-1 p-1 rounded-lg" style={{ background: t.bgCard, border: `1px solid ${t.border}` }}>
-      {(["dark", "light", "contrast"] as Theme[]).map((opt) => (
-        <button
-          key={opt}
-          onClick={() => setTheme(opt)}
-          className="px-3 py-1.5 rounded-md text-xs font-medium transition"
-          style={{
-            background: theme === opt ? t.accent : "transparent",
-            color: theme === opt ? "#fff" : t.textMuted,
-          }}
-        >
-          {opt === "dark" ? "Dark" : opt === "light" ? "Light" : "A11y"}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function StepBlock({ step, t, isContrast }: { step: typeof guide.steps[0]; t: Record<string, string>; isContrast: boolean }) {
+function StepBlock({ step }: { step: (typeof guide.steps)[0] }) {
   const [showFix, setShowFix] = useState(false);
-  const baseFontSize = isContrast ? "18px" : "16px";
 
   return (
-    <div className="py-16 md:py-24" style={{ borderBottom: `1px solid ${t.border}` }}>
+    <div className="py-16 md:py-24" style={{ borderBottom: "1px solid var(--border)" }}>
       <div className="max-w-2xl mx-auto px-6">
         {/* Step number */}
         <div className="mb-8">
           <span
             className="inline-flex items-center justify-center w-12 h-12 rounded-full text-lg font-light"
-            style={{ border: `1.5px solid ${t.accent}`, color: t.accent }}
+            style={{ border: "1.5px solid var(--accent)", color: "var(--accent)" }}
           >
             {step.number}
           </span>
         </div>
 
         {/* Action headline */}
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 tracking-tight" style={{ color: t.text, fontSize: isContrast ? "28px" : undefined }}>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 tracking-tight">
           {step.action}
         </h2>
 
         {/* Body */}
-        <p className="leading-relaxed mb-6" style={{ color: t.text, fontSize: baseFontSize, lineHeight: "1.75" }}>
+        <p className="leading-relaxed mb-6" style={{ lineHeight: "1.75" }}>
           {step.body}
         </p>
 
         {/* Screenshot placeholder */}
-        <div className="rounded-lg mb-8 flex items-center justify-center" style={{ background: t.bgCard, border: `1px solid ${t.border}`, height: "300px" }}>
-          <span className="text-sm" style={{ color: t.textWhisper }}>Annotated screenshot — Step {step.number}</span>
+        <div
+          className="rounded-lg mb-8 flex items-center justify-center"
+          style={{ background: "var(--bg-card)", border: "1px solid var(--border)", height: "300px" }}
+        >
+          <span className="text-sm" style={{ color: "var(--text-muted)" }}>
+            Annotated screenshot — Step {step.number}
+          </span>
         </div>
 
         {/* Whisper / Why */}
-        <p className="italic leading-relaxed mb-6" style={{ color: t.textWhisper, fontSize: isContrast ? "16px" : "14px", paddingLeft: "1.5rem", borderLeft: `2px solid ${t.border}` }}>
+        <p
+          className="italic leading-relaxed mb-6 text-sm"
+          style={{ color: "var(--text-muted)", paddingLeft: "1.5rem", borderLeft: "2px solid var(--border)" }}
+        >
           {step.whisper}
         </p>
 
         {/* Fix — collapsible */}
         {step.fix && (
-          <div>
-            <button
-              onClick={() => setShowFix(!showFix)}
-              className="text-sm font-medium transition"
-              style={{ color: t.textMuted }}
+          <details className="group">
+            <summary
+              className="text-sm font-medium cursor-pointer transition list-none"
+              style={{ color: "var(--text-muted)" }}
             >
-              {showFix ? "− Hide troubleshooting" : "+ If something went wrong"}
-            </button>
-            {showFix && (
-              <p className="mt-3 text-sm leading-relaxed pl-4" style={{ color: t.textMuted, borderLeft: `2px solid ${t.accent}40` }}>
-                {step.fix}
-              </p>
-            )}
-          </div>
+              <span className="group-open:hidden">+ If something went wrong</span>
+              <span className="hidden group-open:inline">− Hide troubleshooting</span>
+            </summary>
+            <p
+              className="mt-3 text-sm leading-relaxed pl-4"
+              style={{ color: "var(--text-muted)", borderLeft: "2px solid color-mix(in srgb, var(--accent) 40%, transparent)" }}
+            >
+              {step.fix}
+            </p>
+          </details>
         )}
       </div>
     </div>
@@ -166,17 +120,18 @@ function StepBlock({ step, t, isContrast }: { step: typeof guide.steps[0]; t: Re
 }
 
 export default function GuidePage() {
-  const [theme, setTheme] = useTheme();
-  const t = themes[theme];
-  const isContrast = theme === "contrast";
-
   return (
-    <div className="min-h-screen transition-colors duration-300" style={{ background: t.bg, color: t.text }}>
+    <div className="min-h-screen" style={{ background: "var(--bg)", color: "var(--text)" }}>
       {/* Nav */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md" style={{ background: `${t.bg}ee`, borderBottom: `1px solid ${t.border}` }}>
+      <nav
+        className="sticky top-0 z-50 backdrop-blur-md"
+        style={{ background: "color-mix(in srgb, var(--bg) 85%, transparent)", borderBottom: "1px solid var(--border)" }}
+      >
         <div className="max-w-2xl mx-auto flex items-center justify-between px-6 py-4">
-          <a href="/" className="text-sm font-medium" style={{ color: t.textMuted }}>← All Guides</a>
-          <ThemeToggle theme={theme} setTheme={setTheme} />
+          <a href="/" className="text-sm font-medium" style={{ color: "var(--text-muted)" }}>
+            ← All Guides
+          </a>
+          <ThemeToggle />
         </div>
       </nav>
 
@@ -184,20 +139,23 @@ export default function GuidePage() {
       <header className="pt-20 pb-16">
         <div className="max-w-2xl mx-auto px-6">
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-xs font-medium px-3 py-1 rounded-full" style={{ background: t.accentSoft, color: t.accent }}>
+            <span
+              className="text-xs font-medium px-3 py-1 rounded-full"
+              style={{ background: "color-mix(in srgb, var(--accent) 15%, transparent)", color: "var(--accent)" }}
+            >
               Updated for v{guide.version}
             </span>
-            <span className="text-xs" style={{ color: t.textWhisper }}>
+            <span className="text-xs" style={{ color: "var(--text-muted)" }}>
               Last updated {guide.lastUpdated}
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight" style={{ fontSize: isContrast ? "3.5rem" : undefined }}>
+          <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight">
             {guide.title}
           </h1>
-          <p className="text-xl mb-8" style={{ color: t.textMuted }}>
+          <p className="text-xl mb-8" style={{ color: "var(--text-muted)" }}>
             {guide.subtitle}
           </p>
-          <div className="flex items-center gap-6 text-sm" style={{ color: t.textWhisper }}>
+          <div className="flex items-center gap-6 text-sm" style={{ color: "var(--text-muted)" }}>
             <span>{guide.readTime} read</span>
             <span>{guide.pages} pages</span>
             <span>{guide.steps.length} steps</span>
@@ -208,7 +166,7 @@ export default function GuidePage() {
       {/* Steps */}
       <main>
         {guide.steps.map((step) => (
-          <StepBlock key={step.number} step={step} t={t} isContrast={isContrast} />
+          <StepBlock key={step.number} step={step} />
         ))}
       </main>
 
@@ -216,24 +174,28 @@ export default function GuidePage() {
       <section className="py-24">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4 tracking-tight">Get the full guide</h2>
-          <p className="mb-8" style={{ color: t.textMuted }}>
-            {guide.steps.length} steps shown above. The complete guide includes {guide.pages} pages with screenshots, advanced techniques, prompt templates, and AI chat support.
+          <p className="mb-8" style={{ color: "var(--text-muted)" }}>
+            {guide.steps.length} steps shown above. The complete guide includes {guide.pages} pages
+            with screenshots, advanced techniques, prompt templates, and AI chat support.
           </p>
           <a
             href={guide.buyUrl}
             className="inline-block px-10 py-4 rounded-lg font-semibold text-lg text-white transition hover:opacity-90"
-            style={{ background: t.accent }}
+            style={{ background: "var(--accent)" }}
           >
             Get Full Guide — {guide.price}
           </a>
-          <p className="text-xs mt-4" style={{ color: t.textWhisper }}>
+          <p className="text-xs mt-4" style={{ color: "var(--text-muted)" }}>
             One-time purchase. Lifetime updates. Instant download.
           </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 text-center text-xs" style={{ color: t.textWhisper, borderTop: `1px solid ${t.border}` }}>
+      <footer
+        className="py-8 text-center text-xs"
+        style={{ color: "var(--text-muted)", borderTop: "1px solid var(--border)" }}
+      >
         A Meshuga Guide — Crazy Simple Tech
       </footer>
     </div>
