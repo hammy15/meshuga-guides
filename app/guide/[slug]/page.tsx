@@ -5,6 +5,7 @@ import ThemeToggle from "../../components/ThemeToggle";
 import SocialProofTicker from "../../components/SocialProofTicker";
 import ShareButtons from "../../components/ShareButtons";
 import PurchaseCounter from "../../components/PurchaseCounter";
+import TweetableQuote from "../../components/TweetableQuote";
 import { cursorAiGuide } from "@/lib/guides/cursor-ai";
 
 const guide = cursorAiGuide;
@@ -200,7 +201,33 @@ export default function GuidePage() {
           </p>
         </div>
         {guide.sections.map((step, i) => (
-          <StepBlock key={i} step={step} />
+          <div key={i}>
+            <StepBlock step={step} />
+            {i === 2 && (
+              <div className="max-w-2xl mx-auto px-6">
+                <TweetableQuote
+                  quote="This isn't autocomplete on steroids. This is AI that understands context."
+                  guideUrl="https://techcliffnotes.com/guide/cursor-ai"
+                />
+              </div>
+            )}
+            {i === 5 && (
+              <div className="max-w-2xl mx-auto px-6">
+                <TweetableQuote
+                  quote="Comments are the best prompts. Write what you want in plain English, then let Cursor implement it."
+                  guideUrl="https://techcliffnotes.com/guide/cursor-ai"
+                />
+              </div>
+            )}
+            {i === 8 && (
+              <div className="max-w-2xl mx-auto px-6">
+                <TweetableQuote
+                  quote="Treat AI code like code from a smart but sometimes careless colleague — review before merging."
+                  guideUrl="https://techcliffnotes.com/guide/cursor-ai"
+                />
+              </div>
+            )}
+          </div>
         ))}
       </main>
 
