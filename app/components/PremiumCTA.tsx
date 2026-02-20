@@ -26,7 +26,7 @@ export default function PremiumCTA({ accentColor }: PremiumCTAProps) {
             Access the full library — current guides and every new one we publish.
           </p>
           <div className="flex items-baseline justify-center gap-2 mb-2">
-            <span className="text-4xl font-bold">$2.99</span>
+            <span className="text-4xl font-bold">$9.99</span>
             <span style={{ color: "var(--text-muted)" }}>/month</span>
           </div>
           <p className="text-sm mb-8" style={{ color: "var(--text-muted)" }}>
@@ -37,7 +37,7 @@ export default function PremiumCTA({ accentColor }: PremiumCTAProps) {
             className="inline-block px-8 py-4 rounded-xl font-semibold text-white transition hover:opacity-90 text-lg"
             style={{ background: accentColor }}
           >
-            Get Ahead for $2.99/mo
+            Get Ahead for $9.99/mo
           </a>
           <p className="text-xs mt-4" style={{ color: "var(--text-muted)" }}>Cancel anytime. No lock-in.</p>
         </div>
