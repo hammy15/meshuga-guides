@@ -106,10 +106,11 @@ export const claudeVsChatgptGuide = {
     },
   ],
   tableOfContents: [
-    { section: "Quick Decision", pages: "1-10", items: "30-second answer, pricing, writing, coding, research, speed, honesty, decision matrix, two-pass workflow" },
-    { section: "Advanced Workflows", pages: "11-18", items: "Writing deep-dive, coding workflows, research methods, productivity hacks, learning strategies, content creation" },
-    { section: "Business & Strategy", pages: "19-24", items: "Business plans, customer support, marketing, technical docs, creative projects" },
-    { section: "Using Both Together", pages: "25-30", items: "Two-pass mastery, parallel comparison, ecosystem tools, action plans, your personalized recommendation" },
+    { section: "Quick Decision Framework", pages: "1-10", items: "30-second answer, pricing, writing quality, coding workflows, research & analysis, speed & ecosystem, honesty & hallucinations, decision matrix, two-pass workflow, cost optimization" },
+    { section: "Advanced Writing & Coding", pages: "11-12", items: "Long-form content strategy, email & professional writing, creative writing & fiction, code review & debugging, learning new frameworks, production code vs prototypes" },
+    { section: "Research & Productivity", pages: "13-15", items: "Academic research, business research, fact-checking, email management, meeting notes, task breakdown & planning, tutoring, study guides, language learning" },
+    { section: "Content & Business", pages: "16-18", items: "Blog posts, social media content, video scripts, business plans, customer support, marketing & copywriting, API docs, user guides, README files" },
+    { section: "Creative & Using Both", pages: "19-20", items: "Brainstorming & ideation, storytelling, design concepts, two-pass workflow mastery, parallel comparison, specialized ecosystems, your action plan" },
   ],
   fullGuideIncludes: [
     "30 pages of decision-focused analysis — zero filler",
