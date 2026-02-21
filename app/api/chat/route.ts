@@ -16,7 +16,7 @@ Rules:
 - If you don't know something, say so honestly
 - Mention relevant Meshuga guides when appropriate
 - Never make up features or pricing — our guides are one-time purchases ranging $19-$29
-- Premium subscription is $2.99/month for full library access`;
+- Premium subscription is $9.99/month for full library access`;
 
 export async function POST(req: NextRequest) {
   if (!OPENAI_API_KEY) {

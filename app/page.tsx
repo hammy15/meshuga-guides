@@ -5,6 +5,7 @@ import ValueProps from "./components/ValueProps";
 import PremiumCTA from "./components/PremiumCTA";
 import NewsletterCTA from "./components/NewsletterCTA";
 import BrandedFooter from "./components/BrandedFooter";
+import ChatWidget from "./components/ChatWidget";
 import ThemeToggle from "./components/ThemeToggle";
 
 // Featured guide (Cursor AI — first product)
@@ -127,6 +128,9 @@ export default function Home() {
 
       {/* Newsletter */}
       <NewsletterCTA accentColor={accent} />
+
+      {/* Chat Widget */}
+      <ChatWidget accentColor={site.colorHex || "#2563EB"} siteName={site.name} />
 
       {/* Footer */}
       <BrandedFooter siteName={site.name} currentDomain={site.domain} />
