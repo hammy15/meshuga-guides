@@ -49,6 +49,15 @@ const upcomingGuides = [
     buyUrl: "#",
     status: "coming-soon" as const,
   },
+  {
+    title: "OpenClaw",
+    subtitle: "AI Agent on Your Mac",
+    description: "Set up a personal AI agent that reads your files, runs commands, and never sleeps.",
+    price: "$29",
+    badge: "New",
+    buyUrl: "#",
+    status: "coming-soon" as const,
+  },
 ];
 
 export default function Home() {
