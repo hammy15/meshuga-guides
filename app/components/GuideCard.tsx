@@ -34,17 +34,35 @@ export default function GuideCard({
         boxShadow: featured ? `0 8px 40px color-mix(in srgb, ${accentColor} 10%, transparent)` : undefined,
       }}
     >
-      {/* Guide cover placeholder */}
+      {/* Guide cover — premium glass morphism */}
       <div
-        className={`rounded-xl mb-6 flex items-center justify-center ${featured ? "md:mb-0 md:min-w-[280px] md:h-[320px]" : "h-[200px]"}`}
+        className={`relative rounded-2xl mb-6 flex flex-col items-start justify-end overflow-hidden ${featured ? "md:mb-0 md:min-w-[280px] md:h-[320px]" : "h-[220px]"}`}
         style={{
-          background: `linear-gradient(135deg, color-mix(in srgb, ${accentColor} 15%, var(--bg-elevated)), color-mix(in srgb, ${accentColor} 5%, var(--bg-elevated)))`,
-          border: "1px solid var(--border)",
+          background: `linear-gradient(160deg, ${accentColor}, color-mix(in srgb, ${accentColor} 60%, #000))`,
         }}
       >
-        <div className="text-center">
-          <p className="text-3xl font-bold mb-1" style={{ color: accentColor }}>{title}</p>
-          <p className="text-sm" style={{ color: "var(--text-muted)" }}>{subtitle}</p>
+        {/* Decorative geometric elements */}
+        <div
+          className="absolute top-[-30%] right-[-20%] w-[60%] h-[80%] rounded-full opacity-20"
+          style={{ background: "radial-gradient(circle, rgba(255,255,255,0.3), transparent 70%)" }}
+        />
+        <div
+          className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[50%] rounded-full opacity-10"
+          style={{ background: "radial-gradient(circle, rgba(255,255,255,0.4), transparent 60%)" }}
+        />
+        {/* Subtle grid pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+        {/* Content overlay */}
+        <div className="relative z-10 p-6 w-full">
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-white/60 mb-2">Meshuga Guide</p>
+          <p className="text-2xl font-bold text-white leading-tight mb-1">{title}</p>
+          <p className="text-sm text-white/70">{subtitle}</p>
         </div>
       </div>
 
