@@ -17,20 +17,34 @@ const featuredGuide = {
   price: "$29",
   badge: "Trending Now",
   badgeColor: "#ef4444",
-  buyUrl: "https://ohamm.gumroad.com",
+  buyUrl: "https://ohamm.gumroad.com/l/cursor-ai",
   status: "available" as const,
 };
 
-const upcomingGuides = [
+const availableGuides = [
   {
     title: "Claude vs ChatGPT",
     subtitle: "The Decision Guide",
-    description: "Side-by-side comparison so you pick the right AI for your workflow.",
+    description: "Side-by-side comparison so you pick the right AI for your workflow. Know which one to use when.",
     price: "$19",
-    badge: "Coming This Week",
-    buyUrl: "#",
-    status: "coming-soon" as const,
+    badge: "Available Now",
+    badgeColor: "#10B981",
+    buyUrl: "https://ohamm.gumroad.com/l/claude-vs-chatgpt",
+    status: "available" as const,
   },
+  {
+    title: "OpenClaw Mac Setup",
+    subtitle: "AI Agent on Your Mac",
+    description: "Set up a personal AI agent that reads your files, runs commands, and never sleeps. Complete installation guide.",
+    price: "$29",
+    badge: "Available Now",
+    badgeColor: "#10B981",
+    buyUrl: "https://ohamm.gumroad.com/l/openclaw-mac-setup",
+    status: "available" as const,
+  },
+];
+
+const upcomingGuides = [
   {
     title: "Wispr Flow",
     subtitle: "Voice-to-Text Mastery",
@@ -46,15 +60,6 @@ const upcomingGuides = [
     description: "Research at the speed of thought. Replace Google for deep questions.",
     price: "$19",
     badge: "Coming Soon",
-    buyUrl: "#",
-    status: "coming-soon" as const,
-  },
-  {
-    title: "OpenClaw",
-    subtitle: "AI Agent on Your Mac",
-    description: "Set up a personal AI agent that reads your files, runs commands, and never sleeps.",
-    price: "$29",
-    badge: "New",
     buyUrl: "#",
     status: "coming-soon" as const,
   },
@@ -110,6 +115,23 @@ export default function Home() {
           Our most popular guide right now
         </p>
         <GuideCard {...featuredGuide} accentColor={accent} featured />
+      </section>
+
+      {/* Available Guides */}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <div className="flex items-baseline justify-between mb-8">
+          <div>
+            <h2 className="text-2xl font-bold">More Guides</h2>
+            <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
+              Available now
+            </p>
+          </div>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {availableGuides.map((g) => (
+            <GuideCard key={g.title} {...g} accentColor={accent} />
+          ))}
+        </div>
       </section>
 
       {/* Upcoming */}
