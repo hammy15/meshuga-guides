@@ -66,7 +66,7 @@ export default function Home() {
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
           <a href="/" className="text-lg font-bold" style={{ color: accent }}>
-            {site.emoji} {site.name}
+            {site.name}
           </a>
           <div className="hidden sm:flex items-center gap-6 text-sm" style={{ color: "var(--text-muted)" }}>
             <a href="#guides">Guides</a>

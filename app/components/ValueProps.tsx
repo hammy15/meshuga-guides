@@ -4,22 +4,22 @@ interface ValuePropsProps {
 
 const props = [
   {
-    icon: "⏱️",
+    icon: "30m",
     title: "30 Minutes, Not 30 Hours",
     description: "Every guide is designed to get you productive fast. No filler, no fluff — just what you need to know.",
   },
   {
-    icon: "💬",
+    icon: "Aa",
     title: "Plain English",
     description: "Written for humans, not developers. If your grandma can't understand it, we rewrite it.",
   },
   {
-    icon: "🔄",
+    icon: "↻",
     title: "Always Current",
     description: "Software changes fast. Buy once, get free updates forever. Your guide stays accurate.",
   },
   {
-    icon: "📱",
+    icon: "PDF",
     title: "Read Anywhere",
     description: "PDF format works on any device. Read on your phone, tablet, or laptop — online or off.",
   },
@@ -36,7 +36,7 @@ export default function ValueProps({ accentColor }: ValuePropsProps) {
         {props.map((p) => (
           <div key={p.title} className="flex gap-4">
             <div
-              className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-xl"
+              className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-xs font-bold tracking-tight"
               style={{ background: `color-mix(in srgb, ${accentColor} 10%, var(--bg-elevated))` }}
             >
               {p.icon}
