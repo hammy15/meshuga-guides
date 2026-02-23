@@ -1,11 +1,18 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 
 function SuccessContent() {
   const params = useSearchParams();
   const sessionId = params.get("session_id");
+
+  // Fire Reddit Purchase event on page load
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.rdt) {
+      window.rdt("track", "Purchase");
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6" style={{ background: "var(--bg)", color: "var(--text)" }}>
